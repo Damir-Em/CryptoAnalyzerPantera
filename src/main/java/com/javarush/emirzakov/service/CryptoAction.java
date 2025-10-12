@@ -1,5 +1,7 @@
 package com.javarush.emirzakov.service;
 
+import com.javarush.emirzakov.model.Alphabet;
+
 public abstract class CryptoAction {
 
     protected Alphabet alphabet = new Alphabet();
