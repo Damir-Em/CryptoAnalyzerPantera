@@ -1,5 +1,4 @@
 package com.javarush.emirzakov.model;
-
 public class Alphabet {
 
     public static final char[] ALPHABET = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
