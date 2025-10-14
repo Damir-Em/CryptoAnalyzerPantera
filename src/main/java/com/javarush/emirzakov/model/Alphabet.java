@@ -2,7 +2,7 @@ package com.javarush.emirzakov.model;
 public class Alphabet {
 
     public static final char[] ALPHABET = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
-            'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', ' '};
+            'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
 
     public int getCharIndex(char c) {
         for (int i = 0; i < ALPHABET.length; i++) {
@@ -20,7 +20,3 @@ public class Alphabet {
     }
 
 }
-
-//создать объект
-// если символа нет в массиве - пропускать
-// игнорировать размер букв

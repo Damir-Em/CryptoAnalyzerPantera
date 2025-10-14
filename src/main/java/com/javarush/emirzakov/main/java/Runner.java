@@ -26,11 +26,10 @@ public class Runner {
                 text = input;
                 System.out.println("Using input text directly");
             }
-            System.out.println("""
-                    Choose action:
-                    1 - Encrypt
-                    2 - Decrypt
-                    """);
+            System.out.println("\nChoose action: ");
+            System.out.println("1 - Encrypt");
+            System.out.println("2 - Decrypt");
+
             int choice = readInt(scanner, "Enter choice: ");
             String message = "Enter key (integer): ";
             String result = null;
@@ -51,19 +50,29 @@ public class Runner {
             if (result != null) {
                 System.out.println("Result:");
                 System.out.println(result);
+
+                System.out.println("\nDo you want to save the result to a file? (y/n)");
+                String answer = scanner.nextLine().trim().toLowerCase();
+                if (answer.equals("y")) {
+                    System.out.println("Enter path to file: ");
+                    String filePath = scanner.nextLine().trim();
+
+                    FileWriterService fileWriter = new FileWriterService();
+                    fileWriter.writeFile(filePath, result);
+                }
             }
         }
     }
 
     private static int readInt(Scanner scanner, String prompt) {
-        while (true){
+        while (true) {
             System.out.println(prompt);
             String line = scanner.nextLine().trim();
-                    try{
-                        return Integer.parseInt(line);
-                    } catch (NumberFormatException e){
-                        System.out.println("Please enter valid inger.");
-                    }
+            try {
+                return Integer.parseInt(line);
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter valid integer.");
+            }
         }
     }
 }

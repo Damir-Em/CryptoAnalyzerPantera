@@ -8,7 +8,7 @@ public abstract class CryptoAction {
 
     protected char shiftChar(char c, int key) {
         int index = alphabet.getCharIndex(c);
-        if (index == -1) return c;
+        if (index == -1 || c == ' ') return c;
         return alphabet.getCharByIndex(index + key);
     }
 
