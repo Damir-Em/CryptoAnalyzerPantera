@@ -1,11 +1,14 @@
 package com.javarush.emirzakov.main.java;
 
 
+import com.javarush.emirzakov.service.BruteForceAction;
 import com.javarush.emirzakov.service.DecryptAction;
 import com.javarush.emirzakov.service.EncryptAction;
+import com.javarush.emirzakov.service.TextUtils;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.List;
 import java.util.Scanner;
 
 public class Runner {
@@ -26,9 +29,17 @@ public class Runner {
                 text = input;
                 System.out.println("Using input text directly");
             }
+            String normalized = TextUtils.normalize(text);
+            List<String> tokens = TextUtils.tokenize(normalized);
+
+            System.out.println("Normalized text: " + normalized);
+            //System.out.println("Tokens: " + tokens);
+
+
             System.out.println("\nChoose action: ");
             System.out.println("1 - Encrypt");
             System.out.println("2 - Decrypt");
+            System.out.println("3 - Brute Force (try to find key automatically)");
 
             int choice = readInt(scanner, "Enter choice: ");
             String message = "Enter key (integer): ";
@@ -44,6 +55,19 @@ public class Runner {
                     int key = readInt(scanner, message);
                     DecryptAction decryptAction = new DecryptAction();
                     result = decryptAction.execute(text, key);
+                }
+                case 3 -> {
+                    BruteForceAction bf = new BruteForceAction();
+                    BruteForceAction.Result best = bf.findBestByStopWords(text);
+
+                    if (best != null) {
+                        System.out.println("\n Brute-force result:");
+                        System.out.println("Key: " + best.key + " Score: " + best.score);
+                        System.out.println("Candidate text:\n" + best.text);
+                        result = best.text;
+                    } else {
+                        System.out.println("No likely candidate found by brute force.");
+                    }
                 }
                 default -> System.out.println("Unknown action. Exiting.");
             }

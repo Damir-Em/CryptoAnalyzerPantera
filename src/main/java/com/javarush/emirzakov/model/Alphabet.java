@@ -4,6 +4,10 @@ public class Alphabet {
     public static final char[] ALPHABET = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
             'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
 
+    public int length() {
+        return ALPHABET.length;
+    }
+
     public int getCharIndex(char c) {
         for (int i = 0; i < ALPHABET.length; i++) {
             if (Character.toLowerCase(ALPHABET[i]) == Character.toLowerCase(c)) {
