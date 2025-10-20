@@ -9,6 +9,8 @@ public class DecryptAction extends CryptoAction {
             char ch = text.charAt(i);
             result.append(shiftChar(ch, -key));
         }
-        return result.toString();
+        String s = result.toString();
+        s = s.replaceAll("(?<=[.!?])\\s+", System.lineSeparator());
+        return s;
     }
 }

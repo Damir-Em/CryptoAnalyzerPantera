@@ -92,10 +92,18 @@ public class Runner {
         while (true) {
             System.out.println(prompt);
             String line = scanner.nextLine().trim();
+            if (line.isEmpty()) {
+                System.out.println("Please enter 1, 2, or 3, then press Enter.");
+                continue;
+            }
+            if (!line.matches("\\d+")) {
+                System.out.println("Please enter a valid integer.");
+                continue;
+            }
             try {
                 return Integer.parseInt(line);
             } catch (NumberFormatException e) {
-                System.out.println("Please enter valid integer.");
+                System.out.println("Number too large. Try again.");
             }
         }
     }
