@@ -1,4 +1,4 @@
-package com.javarush.emirzakov.main.java;
+package com.javarush.emirzakov.io;
 
 import java.io.IOException;
 import java.nio.file.Files;
