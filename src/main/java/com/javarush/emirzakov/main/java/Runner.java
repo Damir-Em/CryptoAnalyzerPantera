@@ -34,7 +34,8 @@ public class Runner {
             String normalized = TextUtils.normalize(text);
             List<String> tokens = TextUtils.tokenize(normalized);
 
-            System.out.println("Normalized text: " + normalized);
+            System.out.println("Normalized text: ");
+            System.out.println(normalized.substring(0, Math.min(300, normalized.length())) + "...");
             //System.out.println("Tokens: " + tokens);
 
 
@@ -43,7 +44,7 @@ public class Runner {
             System.out.println("2 - Decrypt");
             System.out.println("3 - Brute Force (try to find key automatically)");
 
-            int choice = readInt(scanner, "Enter choice: ");
+            int choice = readInt(scanner, "Enter choice (1-3): ");
             String message = "Enter key (integer): ";
             String result = null;
 
@@ -74,7 +75,7 @@ public class Runner {
                 default -> System.out.println("Unknown action. Exiting.");
             }
             if (result != null) {
-                System.out.println("Result:");
+                System.out.println("\n=== Result ===");
                 System.out.println(result);
 
                 System.out.println("\nDo you want to save the result to a file? (y/n)");
@@ -85,6 +86,7 @@ public class Runner {
 
                     FileWriterService fileWriter = new FileWriterService();
                     fileWriter.writeFile(filePath, result);
+                    //System.out.println("Result saved to " + filePath);
                 }
             }
         }
