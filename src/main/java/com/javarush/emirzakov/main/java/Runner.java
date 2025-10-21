@@ -10,7 +10,6 @@ import com.javarush.emirzakov.service.TextUtils;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.List;
 import java.util.Scanner;
 
 public class Runner {
@@ -32,7 +31,7 @@ public class Runner {
                 System.out.println("Using input text directly");
             }
             String normalized = TextUtils.normalize(text);
-            List<String> tokens = TextUtils.tokenize(normalized);
+            //List<String> tokens = TextUtils.tokenize(normalized);
 
             System.out.println("Normalized text: ");
             System.out.println(normalized.substring(0, Math.min(300, normalized.length())) + "...");

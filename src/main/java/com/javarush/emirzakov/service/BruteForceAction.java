@@ -24,15 +24,15 @@ public class BruteForceAction {
         if (cipherText == null || cipherText.isBlank()) return null;
 
         DecryptAction decryptAction = new DecryptAction();
-        Alphabet alphabet = new Alphabet();
-        int N = alphabet.length();
+        //Alphabet alphabet = new Alphabet(cipherText);
+        int N = new Alphabet(cipherText).length();
 
         int bestScore = -1;
         Result best = null;
 
         for (int k = 0; k < N; k++) {
             String candidate = decryptAction.execute(cipherText, k);
-            String sample = shortenForAnalysis(candidate, 1000);
+            String sample = shortenForAnalysis(candidate);
             String norm = TextUtils.normalize(sample);
             List<String> tokens = TextUtils.tokenize(norm);
 
@@ -43,14 +43,13 @@ public class BruteForceAction {
             if (matches > bestScore) {
                 bestScore = matches;
                 best = new Result(k, candidate, matches);
-                // System.out.println("k=" + k + " rus=" + rusMatches + " eng=" + engMatches + " -> score=" + matches);
-
             }
         }
         return best;
     }
 
-    private String shortenForAnalysis(String text, int maxLen) {
+    private String shortenForAnalysis(String text) {
+        int maxLen = 1000;
         if (text == null) return "";
         if (text.length() <= maxLen) return text;
 

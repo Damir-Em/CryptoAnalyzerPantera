@@ -1,11 +1,19 @@
 package com.javarush.emirzakov.model;
+
 public class Alphabet {
+    private final char[] ALPHABET;
 
-    public static final char[] ALPHABET = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j',
-            'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
+    private static final char[] ENGLISH = "abcdefghijklmnopqrstuvwxyz".toCharArray();
 
-    public int length() {
-        return ALPHABET.length;
+    private static final char[] RUSSIAN = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя".toCharArray();
+
+
+    public Alphabet(String text) {
+        if (text.matches(".*[а-яА-ЯёЁ].*")) {
+            ALPHABET = RUSSIAN;
+        } else {
+            ALPHABET = ENGLISH;
+        }
     }
 
     public int getCharIndex(char c) {
@@ -21,6 +29,10 @@ public class Alphabet {
         int i = index % ALPHABET.length;
         if (i < 0) i += ALPHABET.length;
         return ALPHABET[i];
+    }
+
+    public int length() {
+        return ALPHABET.length;
     }
 
 }

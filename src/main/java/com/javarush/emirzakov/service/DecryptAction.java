@@ -1,16 +1,17 @@
 package com.javarush.emirzakov.service;
 
+import com.javarush.emirzakov.model.Alphabet;
+
 public class DecryptAction extends CryptoAction {
 
     @Override
     public String execute(String text, int key) {
+        Alphabet alphabet = new Alphabet(text);
         StringBuilder result = new StringBuilder();
         for (int i = 0; i < text.length(); i++) {
             char ch = text.charAt(i);
-            result.append(shiftChar(ch, -key));
+            result.append(shiftChar(ch, -key, alphabet));
         }
-        String s = result.toString();
-        s = s.replaceAll("(?<=[.!?])\\s+", System.lineSeparator());
-        return s;
+        return result.toString();
     }
 }
