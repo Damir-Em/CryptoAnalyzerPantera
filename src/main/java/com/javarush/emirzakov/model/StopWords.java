@@ -13,7 +13,8 @@ public final class StopWords {
             "and", "the", "in", "of", "to", "a", "is", "it", "by", "for",
             "on", "that", "this", "with", "as", "you", "I", "we", "he", "she"
     ));
-    private StopWords(){
+
+    private StopWords() {
 
     }
 }

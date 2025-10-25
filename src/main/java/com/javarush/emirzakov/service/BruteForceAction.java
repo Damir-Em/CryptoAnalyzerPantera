@@ -24,7 +24,6 @@ public class BruteForceAction {
         if (cipherText == null || cipherText.isBlank()) return null;
 
         DecryptAction decryptAction = new DecryptAction();
-        //Alphabet alphabet = new Alphabet(cipherText);
         int N = new Alphabet(cipherText).length();
 
         int bestScore = -1;

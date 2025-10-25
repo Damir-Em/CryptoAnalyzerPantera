@@ -4,8 +4,6 @@ import com.javarush.emirzakov.model.Alphabet;
 
 public abstract class CryptoAction {
 
-    //protected Alphabet alphabet = new Alphabet();
-
     protected char shiftChar(char c, int key, Alphabet alphabet) {
         if (!Character.isLetter(c)) return c;
 

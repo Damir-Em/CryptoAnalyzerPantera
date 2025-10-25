@@ -31,11 +31,9 @@ public class Runner {
                 System.out.println("Using input text directly");
             }
             String normalized = TextUtils.normalize(text);
-            //List<String> tokens = TextUtils.tokenize(normalized);
 
             System.out.println("Normalized text: ");
             System.out.println(normalized.substring(0, Math.min(300, normalized.length())) + "...");
-            //System.out.println("Tokens: " + tokens);
 
 
             System.out.println("\nChoose action: ");
@@ -85,7 +83,6 @@ public class Runner {
 
                     FileWriterService fileWriter = new FileWriterService();
                     fileWriter.writeFile(filePath, result);
-                    //System.out.println("Result saved to " + filePath);
                 }
             }
         }
